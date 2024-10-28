@@ -1,0 +1,39 @@
+/* Reset for Modern Normalize */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: sans-serif;
+  background-color: rgb(221, 244, 255);
+}
+
+button,
+input {
+  font: inherit;
+  border-radius: 5px;
+  border: 1px solid black;
+  transition: scale 0.3 ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(191, 224, 255);
+  border-radius: 5px;
+  border: 1px solid rgb(14, 54, 164);
+  scale: 1.1;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-weight: inherit;
+}

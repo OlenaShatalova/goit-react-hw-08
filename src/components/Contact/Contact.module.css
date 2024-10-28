@@ -1,0 +1,14 @@
+.data p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.myIcon {
+  color: rgb(14, 54, 164);
+}
+
+.btn_delete {
+  height: 100%;
+  padding: 5px 10px;
+}
