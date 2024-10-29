@@ -1,25 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import { handlePending, handleRejected } from '../util/starusHelper';
 
-const contactsSlice = createSlice({
+const slice = createSlice({
   name: 'contacts',
   initialState: {
     items: [],
     loading: false,
     error: null,
   },
-  reducers: {
-    addContact(state, action) {
-      state.items.push(action.payload);
-    },
-    deleteContact(state, action) {
-      state.items = state.items.filter(item => item.id !== action.payload);
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.pending, handlePending)
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, handleRejected)
+      .addCase(addContact.pending, handlePending)
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items.push(action.payload);
+      })
+      .addCase(addContact.rejected, handleRejected)
+      .addCase(deleteContact.pending, handlePending)
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items = state.items.filter(item => item.id !== action.payload.id);
+      })
+      .addCase(deleteContact.rejected, handleRejected);
   },
 });
 
-export const contactsReducer = contactsSlice.reducer; // функція, яка знає, як обробляти всі дії для цього слайсу і оновлювати відповідну частину Redux-стану
-
-export const { addContact, deleteContact } = contactsSlice.actions; // {type: contacts/addContacts, payload: {id,name,number}} ; the same for deleteContacts
-
-export const selectContacts = state => state.contacts.items;
-// export const selectFilteredContacts
+export const contacts = slice.reducer; // функція, яка знає, як обробляти всі дії=actions для цього слайсу і оновлювати відповідну частину Redux-стану//
