@@ -14,6 +14,7 @@ const SearchBox = () => {
         className={css.input}
         type="text"
         value={filter}
+        placeholder="Harry"
         onChange={e => {
           dispatch(changeFilter(e.target.value));
         }}
