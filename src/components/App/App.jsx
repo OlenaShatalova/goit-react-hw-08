@@ -10,6 +10,8 @@ import { fetchContacts } from '../../redux/contactsOps';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import SortBar from '../SortBar/SortBar';
+import Error from '../Error/Error';
+import Loader from '../Loader/Loader';
 import ContactList from '../ContactList/ContactList';
 import css from './App.module.css';
 
@@ -29,8 +31,8 @@ const App = () => {
       <ContactForm />
       <SearchBox />
       <SortBar />
-      {loading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
+      {loading && <Loader>Loading contacts...</Loader>}
+      {error && <Error>{error}</Error>}
       {contacts.length !== 0 && <ContactList />}
     </div>
   );
