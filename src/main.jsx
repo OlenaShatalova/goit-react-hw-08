@@ -5,11 +5,14 @@ import { store } from './redux/store';
 import App from './components/App/App';
 import 'modern-normalize';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </StrictMode>
 );

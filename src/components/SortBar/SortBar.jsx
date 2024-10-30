@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { changeSortType } from '../../redux/filtersSlice';
+import { changeSortType } from '../../redux/filters/slice';
 import css from './SortBar.module.css';
 
 const SortBar = () => {

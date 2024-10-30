@@ -5,7 +5,7 @@ import {
   selectError,
   selectContactsList,
 } from '../../redux/selectors';
-import { fetchContacts } from '../../redux/contactsOps';
+import { fetchContacts } from '../../redux/contacts/operations';
 
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
@@ -14,6 +14,7 @@ import Error from '../Error/Error';
 import Loader from '../Loader/Loader';
 import ContactList from '../ContactList/ContactList';
 import css from './App.module.css';
+import Layout from '../Layout/Layout';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const App = () => {
 
   return (
     <div className={css.form_container}>
+      <Layout />
       <h1 className={css.main_title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
