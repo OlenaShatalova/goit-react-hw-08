@@ -12,6 +12,7 @@ const slice = createSlice({
     isRefreshing: false,
   },
   extraReducers: builder => {
+    // builder.addCase(register.fulfilled, )
     console.log(builder);
     console.log(slice);
   },
