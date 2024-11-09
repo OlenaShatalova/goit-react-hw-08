@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 import { deleteContact } from '../../redux/contacts/operations';
+import { Button } from '@mui/material';
 import css from './Contact.module.css';
 
 const Contact = ({ contact: { id, name, number } }) => {
@@ -18,15 +19,16 @@ const Contact = ({ contact: { id, name, number } }) => {
           {number}
         </p>
       </div>
-      <button
+      <Button
         type="button"
-        className={css.btn_delete}
+        variant="outlined"
+        // className={css.btn_delete}
         onClick={() => {
           dispatch(deleteContact(id));
         }}
       >
-        Delete
-      </button>
+        Del
+      </Button>
     </>
   );
 };

@@ -1,17 +1,15 @@
 import { createSelector } from '@reduxjs/toolkit';
-
-export const selectContactsList = state => state.contacts.items;
-export const selectLoading = state => state.contacts.loading;
-export const selectError = state => state.contacts.error;
+import { selectContactsList } from '../contacts/selectors';
 
 export const selectFilterName = state => state.filters.name;
+
 export const selectSortType = state => state.filters.sort;
 
 export const selectFilteredContacts = createSelector(
   [selectContactsList, selectFilterName, selectSortType],
   (contacts, filter, sort) => {
-    const arr = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    const arr = contacts.filter(({ name, number }) =>
+      `${name} ${number}`.toLowerCase().includes(filter.toLowerCase().trim())
     );
 
     switch (sort) {

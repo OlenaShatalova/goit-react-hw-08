@@ -19,16 +19,16 @@ button,
 input {
   font: inherit;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(33, 46, 81);
   transition: scale 0.3 ease-in-out;
 }
 
-button:hover {
+/* button:hover {
   background-color: rgb(191, 224, 255);
   border-radius: 5px;
   border: 1px solid rgb(14, 54, 164);
   scale: 1.1;
-}
+} */
 
 ul {
   list-style: none;

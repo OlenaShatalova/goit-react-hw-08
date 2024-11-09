@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { addContact } from '../../redux/contacts/operations';
 import { contactsSchema } from '../../util/formHelper';
+import CustomInput from '../CustomInput/CustomInput';
+import { Button } from '@mui/material';
 import css from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -19,22 +21,19 @@ const ContactForm = () => {
       validationSchema={contactsSchema}
     >
       <Form className={css.form}>
-        <label className={css.label}>
-          <span>Name</span>
-          <Field
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Harry Potter"
-          ></Field>
-          <ErrorMessage name="name" component="span" className={css.error} />
-        </label>
-        <label className={css.label}>
-          <span>Number</span>
-          <Field type="text" name="number" placeholder="+380xxxxxxxx"></Field>
-          <ErrorMessage name="number" component="span" className={css.error} />
-        </label>
-        <button type="submit">Add contact</button>
+        <CustomInput
+          name={'name'}
+          label={'Name'}
+          placeholder={'Harry Potter'}
+        />
+        <CustomInput
+          name={'number'}
+          label={'Number'}
+          placeholder={'380xxxxxxxx'}
+        />
+        <Button type="submit" variant="outlined">
+          Add contact
+        </Button>
       </Form>
     </Formik>
   );
