@@ -77,7 +77,7 @@ const Modal = ({ onClose, action, contact: { id, name, number } }) => {
               validationSchema={contactsSchema}
             >
               <Form className={css.form}>
-                <CustomInput name={'name'} label={'Name'} defaultValue={name} />
+                <CustomInput name={'name'} label={'Name'} autoFocus />
                 <CustomInput name={'number'} label={'Number'} />
                 <Button type="submit" variant="contained">
                   Edit contact

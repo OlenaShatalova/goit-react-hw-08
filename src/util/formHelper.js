@@ -21,6 +21,7 @@ export const registerFields = [
     type: 'text',
     label: 'Name',
     placeholder: 'Enter your name',
+    autoFocus: 'autoFocus',
   },
   {
     name: 'email',
@@ -46,6 +47,7 @@ export const loginFields = [
     type: 'text',
     label: 'Email',
     placeholder: 'xxx@mail.com',
+    autoFocus: 'autoFocus',
   },
   {
     name: 'password',
