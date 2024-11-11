@@ -1,6 +1,7 @@
 .label {
   display: inline-block;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .input {
@@ -8,4 +9,19 @@
   width: 350px;
   padding: 5px;
   border: 1px solid rgb(118, 118, 118);
+}
+
+.input::placeholder {
+  color: rgba(118, 118, 118, 0.7);
+}
+
+.input:focus {
+  outline: 2px solid rgba(25, 118, 210, 0.5);
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 57%;
+  cursor: pointer;
 }

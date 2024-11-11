@@ -7,13 +7,18 @@
 }
 
 .input {
-  background: transparent;
+  background-color: transparent;
   outline: none;
   padding-inline: 5px;
 }
 
+.input:autofill {
+  background-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .label input::placeholder {
-  color: rgb(25, 118, 210);
+  color: rgba(25, 118, 210, 0.5);
 }
 
 .error {

@@ -2,7 +2,7 @@ export const handlePending = state => {
   state.loading = true;
 };
 
-export const handleRejected = (state, action) => {
+export const handleRejected = (state, { payload }) => {
   state.loading = false;
-  state.error = action.payload;
+  state.error = payload;
 };

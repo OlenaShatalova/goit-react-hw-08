@@ -22,14 +22,11 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/signup', credentials);
-      console.log(res);
 
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (e) {
-      console.log(e);
-
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -45,13 +42,10 @@ export const login = createAsyncThunk(
     try {
       const res = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
-      console.log(res);
 
       setAuthHeader(res.data.token);
       return res.data;
     } catch (e) {
-      console.log(e);
-
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -63,11 +57,9 @@ export const login = createAsyncThunk(
  */
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    console.log('logout');
     await axios.post('/users/logout');
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
-    console.log(axios.defaults.headers.common.Authorization);
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }
@@ -90,14 +82,11 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      console.log('try', persistedToken);
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       const res = await axios.get('/users/current');
-      console.log(res);
       return res.data;
     } catch (e) {
-      console.log(e);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

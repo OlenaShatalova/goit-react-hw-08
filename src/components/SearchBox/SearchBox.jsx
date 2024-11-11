@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from '../../redux/filters/slice';
 import { selectFilterName } from '../../redux/filters/selectors.js';
+import { IoMdClose } from 'react-icons/io';
+
 import css from './SearchBox.module.css';
 
 const SearchBox = () => {
@@ -18,6 +20,10 @@ const SearchBox = () => {
         onChange={e => {
           dispatch(changeFilter(e.target.value));
         }}
+      />
+      <IoMdClose
+        onClick={() => dispatch(changeFilter(''))}
+        className={css.icon}
       />
     </label>
   );

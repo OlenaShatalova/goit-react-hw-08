@@ -1,5 +1,11 @@
 .wrap {
-  max-width: 960px;
+  min-width: 768px;
   margin-inline: auto;
   padding-inline: 16px;
+}
+
+@media screen and (min-width: 1024px) {
+  .wrap {
+    max-width: 1024px;
+  }
 }

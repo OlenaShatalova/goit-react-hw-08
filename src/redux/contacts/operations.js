@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.goit.global/';
-//https:connections-api.goit.global/
 
 export const fetchContacts = createAsyncThunk(
   // результат = асинхронний action
@@ -15,8 +14,6 @@ export const fetchContacts = createAsyncThunk(
     // Другий аргумент — thunkAPI, {}, який надає допоміжні функції для роботи з дією.
     try {
       const res = await axios.get('/contacts');
-      console.log('contacts-operations', res);
-
       return res.data; // повертає отримані дані у вигляді payload, що буде доступний в обробниках дії в Redux.
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -29,7 +26,18 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const res = await axios.post('/contacts', contact);
-      console.log('contacts-add', res);
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async ({ id, name, number }, thunkAPI) => {
+    try {
+      const res = await axios.patch(`/contacts/${id}`, { name, number });
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -42,7 +50,6 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const res = await axios.delete(`/contacts/${contactId}`);
-      console.log('contacts-del', res);
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

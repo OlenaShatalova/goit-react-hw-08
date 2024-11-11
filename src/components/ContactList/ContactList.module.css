@@ -1,21 +1,21 @@
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 830px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .item {
   padding: 15px 10px;
   display: flex;
-  width: 300px;
   justify-content: space-between;
   align-items: center;
   border: 2px solid;
   border-radius: 5px;
   background-color: #fff;
-}
-
-.item button {
-  width: auto;
-  height: auto;
 }
